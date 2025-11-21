@@ -10,3 +10,4 @@ pandas
 streamlit
 httpx
 evidently
+imbalanced-learn
