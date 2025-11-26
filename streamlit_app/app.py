@@ -175,6 +175,10 @@ if uploaded_file is not None:
         engine="python",
         on_bad_lines="warn"
     )
+    
+    # Ne garder que les colonnes nécessaires + SK_ID_CURR si présent
+    cols_to_keep = ["SK_ID_CURR"] + REQUIRED_FEATURES
+    df = df[[c for c in cols_to_keep if c in df.columns]]
 
 
     df = clean_dataframe(df)
