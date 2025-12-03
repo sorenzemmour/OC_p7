@@ -1,6 +1,7 @@
 fastapi==0.121.2
 uvicorn==0.38.0
-mlflow[extras]==3.6.0     # ← empêche pip d'utiliser mlflow-skinny
+mlflow==3.4.1
+mlflow-skinny==0.0.0
 scikit-learn==1.7.2
 lightgbm==4.6.0
 xgboost==3.0.3
