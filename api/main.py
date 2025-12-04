@@ -33,7 +33,13 @@ def predict(features: CustomerFeatures):
         print("📥 Reçu features:", features.dict())
         print("🔧 Ordered list:", [features.dict().get(f) for f in FEATURE_ORDER])
         X = preprocess_X(X)  # 👉 imputation automatique
-        proba = model.predict_proba(X)[0, 1]
+        # 🔧 Support du dummy model pendant les tests
+        if hasattr(model, "predict_proba"):
+            proba = model.predict_proba(X)[0, 1]
+        else:
+            # Mode test : le dummy retourne déjà une classe 0 ou 1
+            pred_class = model.predict(X)[0]
+            proba = float(pred_class)  # probabilité simulée
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur lors de la prédiction : {e}")
 
