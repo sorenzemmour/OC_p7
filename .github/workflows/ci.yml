@@ -14,16 +14,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Show environment info (debug)
-      run: |
-        echo "Python path:"
-        which python
-        echo "Python version:"
-        python --version
-        echo "Pip version:"
-        pip --version
-
-    - name: Set PYTHONPATH
+    - name: Set PYTHONPATH so tests can import api/
       run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
 
     - name: Set testing environment variable
