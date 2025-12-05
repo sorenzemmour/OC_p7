@@ -1,0 +1,2 @@
+# requirements pour l'API (Render)
+-r api/requirements.txt
